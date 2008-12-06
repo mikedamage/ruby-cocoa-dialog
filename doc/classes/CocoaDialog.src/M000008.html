@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>filesave (CocoaDialog)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File cocoa_dialog.rb, line 133</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">filesave</span>(<span class="ruby-identifier">title</span>, <span class="ruby-identifier">text</span>, <span class="ruby-identifier">options</span>={
+                <span class="ruby-identifier">:create_dirs</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span>,
+                <span class="ruby-identifier">:extensions</span> =<span class="ruby-operator">&gt;</span> [],
+                <span class="ruby-identifier">:start_directory</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">nil</span>,
+                <span class="ruby-identifier">:start_file</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">nil</span>,
+                <span class="ruby-identifier">:string_output</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span>,
+                <span class="ruby-identifier">:width</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">nil</span>,
+                <span class="ruby-identifier">:height</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">nil</span>,
+                <span class="ruby-identifier">:float</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span> })
+                <span class="ruby-node">%x{
+                        #{CD} filesave \
+                        --title &quot;#{title}&quot; \
+                        --text &quot;#{text}&quot; \
+                        --no-newline \
+                        #{&quot;--float&quot; if options[:float]} \
+                        #{&quot;--string-output&quot; if options[:string_output]} \
+                        #{&quot;--with-directory \&quot;&quot; + options[:start_directory] + &quot;\&quot;&quot; if options[:start_directory]} \
+                        #{&quot;--with-file \&quot;&quot; + options[:start_file] + &quot;\&quot;&quot; if options[:start_file]} \
+                        #{&quot;--with-extensions &quot; + options[:extensions].join(&quot;\ &quot;) unless options[:extensions].empty?} \
+                        #{&quot;--width &quot; + options[:width]} \
+                        #{&quot;--height &quot; + options[:height]}
+                }</span>
+        <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

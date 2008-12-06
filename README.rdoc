@@ -1,0 +1,9 @@
+= CocoaDialog Gem
+Author:: Mike Green
+Email:: mike.is.green@gmail.com
+License:: MIT License, see LICENSE.txt
+Copyright 2008, Mike Green
+
+== Summary
+
+== Usage

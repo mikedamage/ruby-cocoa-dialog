@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>new (ProgressBar)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File cocoa_dialog.rb, line 227</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">title</span>, <span class="ruby-identifier">text</span>, <span class="ruby-identifier">options</span>={ <span class="ruby-identifier">:indeterminate</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span>, <span class="ruby-identifier">:percent</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span> })
+                <span class="ruby-identifier">system</span> <span class="ruby-value str">&quot;rm -f /tmp/hpipe; mkfifo /tmp/hpipe&quot;</span>
+                <span class="ruby-ivar">@pid</span> = <span class="ruby-node">%x{
+                        #{CD} progressbar \
+                        --title &quot;#{title}&quot; \
+                        --text &quot;#{text}&quot; \
+                        #{&quot;--indeterminate&quot; if options[:indeterminate]}
+                        #{&quot;--percent &quot; + options[:percent] unless options[:indeterminate]} &lt; /tmp/hpipe &amp;
+                }</span>.<span class="ruby-identifier">slice</span>(<span class="ruby-regexp re">/\d+$/</span>)
+                <span class="ruby-identifier">system</span> <span class="ruby-value str">&quot;exec 3&lt;&gt; /tmp/hpipe&quot;</span>
+        <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

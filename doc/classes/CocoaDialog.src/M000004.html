@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>bubble (CocoaDialog)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File cocoa_dialog.rb, line 5</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">bubble</span>(<span class="ruby-identifier">title</span>, <span class="ruby-identifier">text</span>, <span class="ruby-identifier">options</span>={<span class="ruby-identifier">:timeout</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">3</span>, <span class="ruby-identifier">:alpha</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span><span class="ruby-value">.9</span>, <span class="ruby-identifier">:x</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;right&quot;</span>, <span class="ruby-identifier">:y</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;top&quot;</span>, <span class="ruby-identifier">:icon</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">nil</span>})
+                <span class="ruby-node">%x{
+                        #{CD} bubble --title #{title} \
+                        --text #{text} \
+                        --timeout #{options[:timeout]} \
+                        --x-placement #{options[:x]} \
+                        --y-placement #{options[:y]} \
+                        --icon #{options[:icon]}
+                }</span>
+        <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

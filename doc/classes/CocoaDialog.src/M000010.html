@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>dropdown (CocoaDialog)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File cocoa_dialog.rb, line 192</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">dropdown</span>(<span class="ruby-identifier">title</span>, <span class="ruby-identifier">text</span>, <span class="ruby-identifier">options</span>={
+                <span class="ruby-identifier">:pulldown</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span>,
+                <span class="ruby-identifier">:button_1</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;Ok&quot;</span>,
+                <span class="ruby-identifier">:button_2</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;Cancel&quot;</span>,
+                <span class="ruby-identifier">:button_3</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">nil</span>,
+                <span class="ruby-identifier">:exit_on_change</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span>,
+                <span class="ruby-identifier">:float</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span>,
+                <span class="ruby-identifier">:timeout</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">nil</span>,
+                <span class="ruby-identifier">:string_output</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span>,
+                <span class="ruby-identifier">:width</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">nil</span>,
+                <span class="ruby-identifier">:height</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">nil</span>
+        }, <span class="ruby-operator">*</span><span class="ruby-identifier">items</span>)
+                <span class="ruby-node">%x{
+                        #{CD} dropdown \
+                        --title &quot;#{title}&quot; \
+                        --text &quot;#{text}&quot; \
+                        --items #{items.each {|item| print &quot;\&quot;&quot; + item + &quot;\&quot; &quot;}} \
+                        #{&quot;--button1 \&quot;&quot; + options[:button_1] + &quot;\&quot;&quot; if options[:button_1]} \
+                        #{&quot;--button2 \&quot;&quot; + options[:button_2] + &quot;\&quot;&quot; if options[:button_2]} \
+                        #{&quot;--button3 \&quot;&quot; + options[:button_3] + &quot;\&quot;&quot; if options[:button_3]} \
+                        #{&quot;--exit-onchange&quot; if options[:exit_on_change]} \
+                        #{&quot;--float&quot; if options[:float]} \
+                        #{&quot;--timeout &quot; + options[:timeout] if options[:timeout]} \
+                        #{&quot;--width &quot; + options[:width] if options[:width]} \
+                        #{&quot;--height &quot; + options[:height] if options[:height]} \
+                        #{&quot;--pulldown&quot; if options[:pulldown]} \
+                        #{&quot;--string-output&quot; if options[:string_output]}
+                }</span>
+        <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

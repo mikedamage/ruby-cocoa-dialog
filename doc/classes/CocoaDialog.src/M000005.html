@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>msgbox (CocoaDialog)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File cocoa_dialog.rb, line 16</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">msgbox</span>(<span class="ruby-identifier">title</span>, <span class="ruby-identifier">text</span>, <span class="ruby-identifier">options</span>={
+                <span class="ruby-identifier">:button_1</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;OK&quot;</span>,
+                <span class="ruby-identifier">:button_2</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;Cancel&quot;</span>,
+                <span class="ruby-identifier">:button_3</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">nil</span>,
+                <span class="ruby-identifier">:icon</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">nil</span>,
+                <span class="ruby-identifier">:float</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span>,
+                <span class="ruby-identifier">:string_output</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span>,
+                <span class="ruby-identifier">:width</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">nil</span>,
+                <span class="ruby-identifier">:height</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">nil</span>,
+                <span class="ruby-identifier">:yesno</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span>,
+                <span class="ruby-identifier">:ok</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span>,
+                <span class="ruby-identifier">:infotext</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">nil</span>,
+                <span class="ruby-identifier">:timeout</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">nil</span> })
+                <span class="ruby-comment cmt"># Returns either a string w/ either the text of the button pressed, or its number.</span>
+                <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:yesno</span>]
+                        <span class="ruby-node">%x{
+                                #{CD} yesno-msgbox \
+                                --title &quot;#{title}&quot; \
+                                --text &quot;#{text}&quot; \
+                                --no-newline \
+                                #{&quot;--informative-text \&quot;&quot; + options[:infotext] + &quot;\&quot;&quot; if options[:infotext]} \
+                                #{&quot;--icon \&quot;&quot; + options[:icon] + &quot;\&quot;&quot; if options[:icon]} \
+                                #{&quot;--string-output&quot; if options[:string_output]} \
+                                #{&quot;--width &quot; + options[:width] if options[:width]} \
+                                #{&quot;--height &quot; + options[:height] if options[:height]} \
+                                #{&quot;--float&quot; if options[:float]} \
+                                #{&quot;--timeout &quot; + options[:timeout] if options[:timeout]}
+                        }</span>
+                <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:ok</span>]
+                        <span class="ruby-node">%x{
+                                #{CD} ok-msgbox \
+                                --title &quot;#{title}&quot; \
+                                --text &quot;#{text}&quot; \
+                                --no-newline \
+                                #{&quot;--informative-text \&quot;&quot; + options[:infotext] + &quot;\&quot;&quot; if options[:infotext]} \
+                                #{&quot;--icon \&quot;&quot; + options[:icon] + &quot;\&quot;&quot; if options[:icon]} \
+                                #{&quot;--string-output&quot; if options[:string_output]} \
+                                #{&quot;--width &quot; + options[:width] if options[:width]} \
+                                #{&quot;--height &quot; + options[:height] if options[:height]} \
+                                #{&quot;--float&quot; if options[:float]} \
+                                #{&quot;--timeout &quot; + options[:timeout] if options[:timeout]}
+                        }</span>
+                <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:ok</span>] <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:yesno</span>]
+                        <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;Only one kind of menu can be selected.&quot;</span>
+                <span class="ruby-keyword kw">else</span>
+                        <span class="ruby-node">%x{
+                                #{CD} msgbox \
+                                --title &quot;#{title}&quot; \
+                                --text &quot;#{text}&quot; \
+                                --no-newline \
+                                --button1 #{options[:button_1]} \
+                                --button2 #{options[:button_2]} \
+                                #{&quot;--button3 \&quot;&quot; + options[:button_3] + &quot;\&quot;&quot; if options[:button_3]} \
+                                #{&quot;--informative-text \&quot;&quot; + options[:infotext] + &quot;\&quot;&quot; if options[:infotext]} \
+                                #{&quot;--icon \&quot;&quot; + options[:icon] + &quot;\&quot;&quot; if options[:icon]} \
+                                #{&quot;--string-output&quot; if options[:string_output]} \
+                                #{&quot;--width &quot; + options[:width] if options[:width]} \
+                                #{&quot;--height &quot; + options[:height] if options[:height]} \
+                                #{&quot;--float&quot; if options[:float]} \
+                                #{&quot;--timeout &quot; + options[:timeout] if options[:timeout]}
+                        }</span>
+                <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

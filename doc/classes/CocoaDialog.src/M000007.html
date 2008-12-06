@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>fileselect (CocoaDialog)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File cocoa_dialog.rb, line 104</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">fileselect</span>(<span class="ruby-identifier">title</span>, <span class="ruby-identifier">text</span>, <span class="ruby-identifier">options</span>={
+                <span class="ruby-identifier">:directories</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span>,
+                <span class="ruby-identifier">:only_directories</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span>,
+                <span class="ruby-identifier">:multiple</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span>,
+                <span class="ruby-identifier">:extensions</span> =<span class="ruby-operator">&gt;</span> [],
+                <span class="ruby-identifier">:start_directory</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">nil</span>,
+                <span class="ruby-identifier">:start_file</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">nil</span>,
+                <span class="ruby-identifier">:string_output</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span>,
+                <span class="ruby-identifier">:width</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">nil</span>,
+                <span class="ruby-identifier">:height</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">nil</span>,
+                <span class="ruby-identifier">:float</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span> })
+                <span class="ruby-node">%x{
+                        #{CD} fileselect \
+                        --title &quot;#{title}&quot; \
+                        --text &quot;#{text}&quot; \
+                        --no-newline \
+                        #{&quot;--float&quot; if options[:float]} \
+                        #{&quot;--string-output&quot; if options[:string_output]} \
+                        #{&quot;--select-directories&quot; if options[:directories]} \
+                        #{&quot;--select-only-directories&quot; if options[:only_directories]} \
+                        #{&quot;--select-multuple&quot; if options[:multiple]} \
+                        #{&quot;--with-extensions &quot; + options[:extensions].join(&quot;\ &quot;) unless options[:extensions].empty?} \
+                        #{&quot;--with-directory \&quot;&quot; + options[:start_directory] + &quot;\&quot;&quot; if options[:start_directory]} \
+                        #{&quot;--with-file \&quot;&quot; + options[:start_file] + &quot;\&quot;&quot; if options[:start_file]} \
+                        #{&quot;--width &quot; + options[:width]} \
+                        #{&quot;--height &quot; + options[:height]}
+                }</span>
+        <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

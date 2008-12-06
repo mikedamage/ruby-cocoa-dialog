@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>inputbox (CocoaDialog)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File cocoa_dialog.rb, line 80</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">inputbox</span>(<span class="ruby-identifier">title</span>, <span class="ruby-identifier">text</span>, <span class="ruby-identifier">options</span>={
+                <span class="ruby-identifier">:float</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span>,
+                <span class="ruby-identifier">:string_output</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span>,
+                <span class="ruby-identifier">:width</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">nil</span>,
+                <span class="ruby-identifier">:height</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">nil</span>,
+                <span class="ruby-identifier">:infotext</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">nil</span>,
+                <span class="ruby-identifier">:secure</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span>,
+                <span class="ruby-identifier">:timeout</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">nil</span> })
+                <span class="ruby-comment cmt"># Returns an array: [&lt;button number or label&gt;, &lt;text&gt;]</span>
+                <span class="ruby-node">%x{
+                        #{CD} standard-inputbox \
+                        --title &quot;#{title}&quot; \
+                        --informative-text &quot;#{text}&quot; \
+                        --no-newline \
+                        #{&quot;--no-show&quot; if options[:secure]} \
+                        #{&quot;--float&quot; if options [:float]} \
+                        #{&quot;--string-output&quot; if options[:string_output]} \
+                        #{&quot;--width &quot; + options[:width] if options[:width]} \
+                        #{&quot;--height &quot; + options[:height] if options[:height]} \
+                        #{&quot;--text \&quot;&quot; + options[:infotext] + &quot;\&quot;&quot; if options[:infotext]} \
+                        #{&quot;--timeout &quot; + options[:timeout] if options[:timeout]}
+                }</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">&quot;\n&quot;</span>)
+        <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>
