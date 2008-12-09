@@ -1,9 +1,15 @@
-= CocoaDialog Gem
+= CocoaDialog Ruby Wrapper
 Author:: Mike Green
 Email:: mike.is.green@gmail.com
 License:: MIT License, see LICENSE.txt
 Copyright 2008, Mike Green
 
 == Summary
+CocoaDialog Wrapper encapsulates some basic functionality of CocoaDialog.app (available separately) for use in Ruby scripts. I haven't bundled CocoaDialog.app because I'm not sure about all the license issues that would come with it, and I don't want to take credit for Mark Stratman's hard work.
+
+You can find CocoaDialog at http://cocoadialog.sourceforge.net. 
+
+CocoaDialog Wrapper looks for CocoaDialog at /Applications/CocoaDialog.app/Contents/MacOS/CocoaDialog by default, but you can change the CD constant in cocoa_dialog.rb
 
 == Usage
+ 
