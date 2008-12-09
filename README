@@ -5,11 +5,12 @@ License:: MIT License, see LICENSE.txt
 Copyright 2008, Mike Green
 
 == Summary
-CocoaDialog Wrapper encapsulates some basic functionality of CocoaDialog.app (available separately) for use in Ruby scripts. I haven't bundled CocoaDialog.app because I'm not sure about all the license issues that would come with it, and I don't want to take credit for Mark Stratman's hard work.
+CocoaDialog Wrapper encapsulates some basic functionality of CocoaDialog.app (available separately) for use in Ruby scripts. I wrote this module as a simple way to add native OS X dialogs to whatever random little scripts I cook up. It's definitely found a place in my workflow, and I hope other people find it useful too.
 
-You can find CocoaDialog at http://cocoadialog.sourceforge.net. 
+I haven't included CocoaDialog.app because I'm not sure about all the license issues that would come with it, and I don't want to take credit for Mark Stratman's hard work. You can find CocoaDialog itself at http://cocoadialog.sourceforge.net. 
 
-CocoaDialog Wrapper looks for CocoaDialog at /Applications/CocoaDialog.app/Contents/MacOS/CocoaDialog by default, but you can change the CD constant in cocoa_dialog.rb
+CocoaDialog Wrapper looks for CocoaDialog at /Applications/CocoaDialog.app/Contents/MacOS/CocoaDialog by default, but you can change the CD constant in cocoa_dialog.rb to make it look elsewhere.
 
 == Usage
+Coming Soon...
  
